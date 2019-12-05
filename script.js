@@ -19,6 +19,8 @@ function mousePressed() {
         planet.control = false;
         if (planet.position.dist(createVector(mouseX, mouseY)) < planet.mass && found == false) {
             control = planets.indexOf(planet);
+            planets[control] = planets[0];
+            planets[0] = planet;
             planet.control = true;
             found = true;
         } 
