@@ -18,11 +18,11 @@ class Planet {
     draw() {
         if (this.control == true) {
             stroke(244,160,0);
-            line(this.position.x, this.position.y, this.position.x+p5.Vector.mult(this.velocity, this.mass).x+(this.velocity.x), this.position.y+p5.Vector.mult(this.velocity, this.mass).y+(this.velocity.y));
+            line(this.position.x, this.position.y, this.position.x+p5.Vector.mult(this.velocity, this.mass).x+(this.velocity.x*10), this.position.y+p5.Vector.mult(this.velocity, this.mass).y+(this.velocity.y*10));
             stroke(15,157,88);
             let force = createVector(0, 0);
             for (force of this.forces) {
-                line(this.position.x, this.position.y, this.position.x+p5.Vector.mult(this.force, this.mass).x+(force.x), this.position.y+p5.Vector.mult(this.force, this.mass).y+(force.y));
+                line(this.position.x, this.position.y, this.position.x+p5.Vector.mult(this.force, this.mass).x+(force.x*10), this.position.y+p5.Vector.mult(this.force, this.mass).y+(force.y*10));
             }
             stroke(66,133,244);
             fill(66,133,244);
