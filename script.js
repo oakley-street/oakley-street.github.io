@@ -28,13 +28,16 @@ function mousePressed() {
 }
 
 function draw() {
+    let momentum = 0;
     background(64);
     for (planet of planets) {
         planet.apply();
     }
     
     for (planet of planets) {
+        momentum = momentum + planet.velocity.magnitude()*planet.mass;
         planet.move();
         planet.draw();
     }
+    console.log(momentum);
 }
