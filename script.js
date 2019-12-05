@@ -35,7 +35,7 @@ function draw() {
     }
     
     for (planet of planets) {
-        momentum = momentum + planet.velocity.magnitude()*planet.mass;
+        momentum = momentum + planet.velocity.mag()*planet.mass;
         planet.move();
         planet.draw();
     }
