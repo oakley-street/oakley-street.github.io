@@ -39,5 +39,5 @@ function draw() {
         planet.move();
         planet.draw();
     }
-    console.log(momentum);
+    //console.log(momentum);
 }
