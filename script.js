@@ -2,7 +2,7 @@ var planets = [];
 function setup() {
     createCanvas(800, 800);
     angleMode(DEGREES);
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 2; i++) {
         let position = createVector(random(800), random(800));
         let velocity = createVector(random(-1, 1), random(-1, 1));
         let mass = random(10, 20);
