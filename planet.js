@@ -49,7 +49,7 @@ class Planet {
         this.force = createVector(0, 0);
         let count = 0;
         for (planet of this.planets) {
-            let magnitude = this.scale * ((this.mass * planet.mass) // (p5.Vector.dist(this.position, planet.position) ^ 2));
+            let magnitude = this.scale * ((this.mass * planet.mass)) // (p5.Vector.dist(this.position, planet.position) ^ 2));
             let current = p5.Vector.sub(planet.position, this.position); 
             current.setMag(magnitude);
             this.force.add(current);
