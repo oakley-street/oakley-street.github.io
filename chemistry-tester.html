@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chemistry Tester</title>
+        
+    </head>
+    <body>
+        <p id="prompt"></p>
+        <p id="answer"> - </p>
+        <form onsubmit="event.preventDefault()"> 
+            <input type="text" id="input" value="">
+            <input type="submit" id="confirm" value="Check"></input>
+        </form>
+        <script>
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+            var cations = ["ammonium", "potassium", "sodium", "barium", "calcium", "magnesium", "aluminium", "zinc", "iron", "lead", "copper", "silver"]
+            var anions = ["nitrate", "chloride", "bromide", "iodide", "sulphate", "carbonate", "hydroxide", "ethanoate"]
+            var next = false;
+
+            var current_prompt = [cations[Math.floor(Math.random() * cations.length)], anions[Math.floor(Math.random() * anions.length)]];
+            document.getElementById("prompt").innerText = capitalizeFirstLetter(current_prompt[0]).concat(" ", capitalizeFirstLetter(current_prompt[1]))
+
+            function solubility(prompt) {
+                if (["nitrate", "ethanoate"].includes(prompt[1])) {
+                    return "Soluble"
+                } else if (["chloride", "bromide", "iodide"].includes(prompt[1])) {
+                    if (["silver", "lead"].includes(prompt[0])) {
+                        return "Insoluble"
+                    } else {
+                        return "Soluble"
+                    }
+                } else if (prompt[1] == "sulphate") {
+                    if (["lead", "barium"].includes(prompt[0])) {
+                        return "Insoluble"
+                    } else if (["silver", "calcium"].includes(prompt[0])) {
+                        return "Partially Soluble"
+                    } else {
+                        return "Soluble"
+                    }
+                } else {
+                    if (["sodium", "potassium", "ammonium"].includes(prompt[0])) {
+                        return "Soluble"                       
+                    } else {
+                        if (prompt.join() == "calcium hydroxide") {
+                            return "Partially Soluble"
+                        } else {
+                            return "Insoluble"
+                        }
+                    }
+                }
+
+            }
+            function process_input() {
+                if (next) {
+                    current_prompt = [cations[Math.floor(Math.random() * cations.length)], anions[Math.floor(Math.random() * anions.length)]];
+                    document.getElementById("prompt").innerText = capitalizeFirstLetter(current_prompt[0]).concat(" ", capitalizeFirstLetter(current_prompt[1]))
+                    document.getElementById("confirm").value = "Check"
+                    document.getElementById("answer").innerText = " - "
+                    document.getElementById("answer").style.color = "black"
+                    next = false
+                } else {
+                    var answer = capitalizeFirstLetter(document.getElementById("input").value.toLowerCase());
+                    
+                    if (answer == solubility(current_prompt)) {
+                        document.getElementById("answer").innerText = "Correct - ".concat(solubility(current_prompt))
+                        document.getElementById("answer").style.color = "green"
+                    } else {
+                        document.getElementById("answer").innerText = "Incorrect - ".concat(solubility(current_prompt))
+                        document.getElementById("answer").style.color = "red"
+                    }
+                    document.getElementById("confirm").value = "Next"
+                    next = true
+                }
+            }
+            document.getElementById("confirm").addEventListener("click", process_input)
+        </script>
+    </body>
+</html>
