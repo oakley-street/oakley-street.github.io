@@ -63,11 +63,11 @@
                     next = false
                 } else {
                     var answer = capitalizeFirstLetter(document.getElementById("input").value.toLowerCase());
-                    if (answer == "S") {
+                    if (answer[0] == "S") {
                         answer = "Soluble";
-                    } else if (answer == "I") {
+                    } else if (answer[0] == "I") {
                         answer = "Insoluble";
-                    } else if (answer == "P") {
+                    } else if (answer[0] == "P") {
                         answer = "Partially soluble";
                     }
                     if (answer == solubility(current_prompt)) {
