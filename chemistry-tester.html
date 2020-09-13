@@ -35,7 +35,7 @@
                     if (["lead", "barium"].includes(prompt[0])) {
                         return "Insoluble"
                     } else if (["silver", "calcium"].includes(prompt[0])) {
-                        return "Partially Soluble"
+                        return "Partially soluble"
                     } else {
                         return "Soluble"
                     }
@@ -44,7 +44,7 @@
                         return "Soluble"                       
                     } else {
                         if (prompt.join() == "calcium hydroxide") {
-                            return "Partially Soluble"
+                            return "Partially soluble"
                         } else {
                             return "Insoluble"
                         }
@@ -63,7 +63,13 @@
                     next = false
                 } else {
                     var answer = capitalizeFirstLetter(document.getElementById("input").value.toLowerCase());
-                    
+                    if (answer == "S") {
+                        answer = "Soluble";
+                    } else if (answer == "I") {
+                        answer = "Insoluble";
+                    } else if (answer == "P") {
+                        answer = "Partially soluble";
+                    }
                     if (answer == solubility(current_prompt)) {
                         document.getElementById("answer").innerText = "Correct - ".concat(solubility(current_prompt))
                         document.getElementById("answer").style.color = "green"
